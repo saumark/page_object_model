@@ -1,5 +1,3 @@
-import pytest
-
 
 def test_navigate_from_home_to_industries(get_pom):
     pom_obj = get_pom
