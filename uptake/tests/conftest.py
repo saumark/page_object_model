@@ -13,11 +13,3 @@ def get_pom(request):
 
     return pom_obj
 
-
-@pytest.fixture(scope="session")
-def clean_up(request):
-    def __clean_up_session(get_pom):
-        pom_obj = get_pom
-        pom_obj.driver.quit()
-
-    request.addfinalizer(__clean_up_session(get_pom))

@@ -21,3 +21,7 @@ def test_navigate_from_home_to_products(get_pom):
     pom_obj.page_obj.set_home()
 
     assert pom_obj.page_obj.verify_header("Uptake Products")
+
+
+def test_clean_up(get_pom):
+    get_pom.driver.quit()
