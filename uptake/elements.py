@@ -71,6 +71,12 @@ class SeleniumProxy:
                             log_exception=not self.ignore_exception, until=self.until)
 
     def __wait_until_stale(self, e):
+        """
+        This method checks for stale element exception thrown when any action is performed on any element.
+
+        :param e:
+        :return:
+        """
         @retrying.retry(stop_max_delay=self.stale_timeout*1000, wait_fixed=250)
         def __until_stale():
             try:
@@ -82,15 +88,33 @@ class SeleniumProxy:
         __until_stale()
 
     def text(self):
+        """
+
+        This methods returns the text or inner html of an element.
+
+        :return: String
+        """
         if self.until == "visible":
             return self.e.text
         else:
             return self.e.get_attribute("innerText").replace("\n", " ").strip()
 
     def get(self, attr):
+        """
+
+        This element gets the value of the attribute specified.
+
+        :param attr:
+        :return: String
+        """
         return self.e.get_attribute(attr)
 
     def click(self):
+        """
+
+        This is smart click method to wrap event handling around an element click.
+
+        """
         if self.until_stale is not None:
             e = find_element(self.until_stale, self.driver, time_out=self.timeout, poll=self.poll, until=self.until)
 

@@ -25,16 +25,25 @@ class PageObjectModel(object):
         self.get_home_page()
 
     def get_home_page(self):
+        """
+        Creates an object of the HomePage class and sets it to the page_obj property.
+        """
         home_page_module = importlib.import_module(utils.get_device_module(self.device) + ".home_page")
         home_page_obj = home_page_module.HomePage(self.driver)
         self.page_obj = home_page_obj
 
     def get_industries_page(self):
+        """
+        Creates an object of the IndustriesPage class and sets it to the page_obj property.
+        """
         industries_page_module = importlib.import_module(utils.get_device_module(self.device) + ".industries_page")
         industries_page_obj = industries_page_module.IndustriesPage(self.driver)
         self.page_obj = industries_page_obj
 
     def get_products_page(self):
+        """
+        Creates an object of the ProductsPage class and sets it to the page_obj property.
+        """
         products_page_module = importlib.import_module(utils.get_device_module(self.device) + ".products_page")
         products_page_obj = products_page_module.ProductsPage(self.driver)
         self.page_obj = products_page_obj
